@@ -19,7 +19,7 @@ In order to utilize the Olympus Network, run the following:
 
 ```bash
 # Start the Vagrant machines
-vagrant up
+make run
 
 # Set up a Python3 virtual env, name it ".venv" for compatibility with the Makefile
 python -m venv .venv
@@ -35,5 +35,13 @@ You should now have 3 Linux VMs running.
 If you wish to completely wipe the environment and tear down the virtual machines, simply run:
 
 ```bash
+# Destroys the Vagrant VMs and related drives
 make clean
 ```
+
+## Various TODOs
+
+In no particular order and not an exclusive list, just jotting things down here.
+
+* Implement Ansible for Nomad and Consul setup
+* Create VM to serve as secondary server host in cluster
