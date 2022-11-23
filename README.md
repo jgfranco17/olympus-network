@@ -19,7 +19,7 @@ In order to utilize the Olympus Network, run the following:
 
 ```bash
 # Start the Vagrant machines
-make run
+make startup
 
 # Set up a Python3 virtual env, name it ".venv" for compatibility with the Makefile
 python -m venv .venv
