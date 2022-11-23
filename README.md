@@ -13,7 +13,7 @@ The following must be installed on the host machine:
 
 Everything else should be installed through the `Makefile` in a local scope only. The use of `Direnv` allows for ease of access by allowing us to load and unload environment variables depending on the current directory.
 
-## Basic Run
+## Starting Up
 
 In order to utilize the Olympus Network, run the following:  
 
@@ -26,4 +26,14 @@ python -m venv .venv
 
 # Install Python prerequisites using local pip
 make install-requirements
+```
+
+You should now have 3 Linux VMs running.
+
+## Tear Down and Cleanup
+
+If you wish to completely wipe the environment and tear down the virtual machines, simply run:
+
+```bash
+make clean
 ```
