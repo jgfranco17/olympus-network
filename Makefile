@@ -34,9 +34,15 @@ clean:
 ping-all: .venv/bin/ansible
 	@cd ansible && ../.venv/bin/ansible -i inventory.yaml all -m ping
 
-.PHONY: install-pyreqs
-install-pyreqs:
+.PHONY: install-requirements
+install-requirements:
+	./.venv/bin/pip install --upgrade pip
+	./.venv/bin/pip install wheel
 	./.venv/bin/pip install -r requirements.txt
+
+.PHONY: enable-venv
+enable-venv:
+	@source ./.venv/bin/activate
 
 # Local pip
 .venv/bin/pip:
