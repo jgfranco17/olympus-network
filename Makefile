@@ -9,8 +9,8 @@ else
 OS_URL := linux
 endif
 
-.PHONY: run
-run:
+.PHONY: startup
+startup:
 	@echo Loading up Olympus systems...
 	@vagrant validate
 	@vagrant up
