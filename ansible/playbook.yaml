@@ -1,0 +1,23 @@
+---
+- name: Setup users
+  hosts: all
+  vars:
+    state: latest
+    user: ouranos
+
+  tasks:
+  - name: Copy file with owner and permissions
+    ansible.builtin.copy:
+      src: ./hosts
+      dest: /tmp/hosts_backup
+      mode: '0644'
+  - name: Add the user {{ user}}
+    ansible.builtin.user:
+      name: "{{ user }}"
+    become: true
+    become_method: sudo
+  - name: Upgrade all apt packages
+    apt:
+      force_apt_get: yes
+      upgrade: dist
+    become: true

@@ -1,0 +1,8 @@
+---
+# tasks file for node
+- name: Set vars when architecture is armv7l
+  set_fact:
+    consul_src_file: "consul__linux_armhfv6.zip"
+    consul_src_url: "https://releases.hashicorp.com/consul//consul_1.14.0_linux_amd64.zip"
+    consul_src_hash: "https://releases.hashicorp.com/consul//consul_1.4.1_SHA256SUMS"
+  when: ansible_facts.architecture == 'amd64'

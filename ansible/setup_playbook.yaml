@@ -1,0 +1,38 @@
+- name: Create consul group
+  group:
+    name: consul
+    state: present
+    system: true
+
+- name: Create consul user
+  user:
+    name: consul
+    group: consul
+    shell: /bin/false
+    home: /etc/consul/
+    state: present
+
+- name: Create consul dir
+  file:
+    state: directory
+    path: ""
+    owner: consul
+    mode: 0755
+
+- name: Get consul binary
+  get_url:
+    url: ""
+    dest: /tmp
+
+- name: Unzip consul binary
+  unarchive:
+    src: /tmp/
+    dest: ""
+    remote_src: true
+    mode: 0744
+
+- name: Create symlink
+  file:
+    src: "/consul"
+    dest: /usr/local/bin/consul
+    state: link
