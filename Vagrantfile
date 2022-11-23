@@ -9,13 +9,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "zeus" do |zeus|
     zeus.vm.hostname = "zeus"
     zeus.vm.network "private_network", ip: "192.168.56.2"
+    zeus.vm.provision "shell", inline: "scripts.install-nomad.sh"
   end
   config.vm.define "poseidon" do |poseidon|
     poseidon.vm.hostname = "poseidon"
     poseidon.vm.network "private_network", ip: "192.168.56.3"
+    poseidon.vm.provision "shell", inline: "scripts.install-nomad.sh"
   end
   config.vm.define "hades" do |hades|
     hades.vm.hostname = "hades"
     hades.vm.network "private_network", ip: "192.168.56.4"
+    hades.vm.provision "shell", inline: "scripts.install-nomad.sh"
   end
 end
