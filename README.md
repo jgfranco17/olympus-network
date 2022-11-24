@@ -1,6 +1,6 @@
 # Olympus Network
 
-A simple playground for network infrastructure tools and virtual machines. In this setup, the host machine will be the central device, networking with 3 virtual machines. Currently, this project is being developed on Linux, but should work on MacOS. Eventually, I plan to implement Ansible for VM setup.
+A simple playground for software infrastructure tools and virtual machines. In this setup, the host machine will be the central device, networking with 3 virtual machines. Currently, this project is being developed on Linux, but should work on MacOS. Eventually, I plan to implement Ansible for VM setup.
 
 ## Requirements
 
