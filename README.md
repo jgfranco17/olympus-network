@@ -15,12 +15,16 @@ Everything else should be installed through the `Makefile` in a local scope only
 
 ## Starting Up
 
-In order to utilize the Olympus Network, run the following:  
+In order to start up the Olympus Network machines, you can use the following command.
 
 ```bash
 # Start the Vagrant machines
 make startup
+```
 
+If you want to use Ansible, we can configure a virtual environment to isolate the installation to local scope.
+
+```bash
 # Set up a Python3 virtual env, name it ".venv" for compatibility with the Makefile
 python -m venv .venv
 
@@ -30,7 +34,7 @@ make install-requirements
 
 You should now have 3 Linux VMs running.
 
-## Tear Down and Cleanup
+## Tear Down and Clean Up
 
 If you wish to completely wipe the environment and tear down the virtual machines, simply run:
 
