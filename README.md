@@ -34,6 +34,15 @@ make install-requirements
 
 You should now have 3 Linux VMs running.
 
+## Connect to VMs via SSH
+
+To remote connect into any of the virtual machines, we can use Vagrant's built-in ssh command. This allows us to connect via hostname rather than IP address.
+
+```bash
+# Connect to VM
+vagrant ssh [zeus|poseidon|hades]
+```
+
 ## Tear Down and Clean Up
 
 If you wish to completely wipe the environment and tear down the virtual machines, simply run:
