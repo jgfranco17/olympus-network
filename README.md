@@ -7,7 +7,7 @@ A simple playground for network infrastructure tools and virtual machines. In th
 The following must be installed on the host machine:
 
 * [Python 3.8](https://github.com/pyenv/pyenv) or greater
-* Makefile
+* [Makefile](https://www.gnu.org/software/make/manual/make.html)
 * [Vagrant](https://www.vagrantup.com/downloads)
 * [Direnv](https://github.com/direnv/direnv)  
 
