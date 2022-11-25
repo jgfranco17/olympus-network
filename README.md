@@ -15,7 +15,7 @@ Everything else should be installed through the `Makefile` in a local scope only
 
 ## Starting Up
 
-In order to start up the Olympus Network machines, you can use the following command.
+In order to start up the Olympus Network machines, you can use the following command. Aside from enacting the standard `vagrant up`, this command first validates the Vagrantfile configuration before running.
 
 ```bash
 # Start the Vagrant machines
