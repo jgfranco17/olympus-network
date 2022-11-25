@@ -30,9 +30,13 @@ clean:
 	@vagrant destroy -f
 	@echo Cleaned all Vagrant files.
 
-.PHONY: ping-all
-ping-all: .venv/bin/ansible
-	@cd ansible && ../.venv/bin/ansible -i inventory.yaml all -m ping
+.PHONY: ansible-setup
+ansible-setup: .venv/bin/ansible
+	@cd ansible && ../.venv/bin/ansible-playbook -i inventory.yaml playbook.yaml
+
+.PHONY: ansible-ping
+ansible-ping: .venv/bin/ansible
+	@cd ansible && ../.venv/bin/ansible -m ping -i inventory.yaml olympians
 
 .PHONY: install-requirements
 install-requirements:
