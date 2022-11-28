@@ -1,23 +1,23 @@
 ---
 - name: Setup users
-  hosts: all
+  hosts: olympians
+  become: true
   vars:
-    state: latest
+    nomad_version: 1.4.2
     user: ouranos
-
   tasks:
-  - name: Copy file with owner and permissions
-    ansible.builtin.copy:
-      src: ./hosts
-      dest: /tmp/hosts_backup
-      mode: '0644'
-  - name: Add the user {{ user}}
-    ansible.builtin.user:
-      name: "{{ user }}"
-    become: true
-    become_method: sudo
-  - name: Upgrade all apt packages
-    apt:
-      force_apt_get: yes
-      upgrade: dist
-    become: true
+    - name: Add the user {{ user }}
+      ansible.builtin.user:
+        name: "{{ user }}"
+      become: true
+      become_method: sudo
+    - name: Upgrade all apt packages
+      apt:
+        force_apt_get: yes
+        upgrade: dist
+      become: true
+    - name: Download Nomad binary
+      ansible.builtin.unarchive:
+        src: "https://releases.hashicorp.com/nomad/{{ nomad_version }}/nomad_{{ nomad_version }}_linux_amd64.zip"
+        dest: /usr/local/bin/nomad
+        remote_src: yes
