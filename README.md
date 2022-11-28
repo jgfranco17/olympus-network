@@ -9,11 +9,6 @@
 
 ---
 
-### Overview
-
-A simple playground for software infrastructure tools and virtual machines. In this setup, the host machine will act as the central device, networking with 3 virtual machines. Currently, this project is being developed on Linux, but should work on MacOS. Eventually, I plan to implement Ansible for VM setup.
-<br>
-
 ## 📝 Table of Contents
 
 - [About](#about)
