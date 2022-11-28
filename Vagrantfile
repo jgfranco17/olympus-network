@@ -10,15 +10,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     zeus.vm.hostname = "zeus"
     zeus.vm.network "private_network", ip: "192.168.56.2"
     # zeus.vm.network "forwarded_port", id: "ssh", host: 2205, guest: 22
+    zeus.vm.provision "shell", inline: "echo Zeus box online!"
   end
   config.vm.define "poseidon" do |poseidon|
     poseidon.vm.hostname = "poseidon"
     poseidon.vm.network "private_network", ip: "192.168.56.3"
     # poseidon.vm.network "forwarded_port", id: "ssh", host: 2206, guest: 22
+    poseidon.vm.provision "shell", inline: "echo Poseidon box online!"
   end
   config.vm.define "hades" do |hades|
     hades.vm.hostname = "hades"
     hades.vm.network "private_network", ip: "192.168.56.4"
     # hades.vm.network "forwarded_port", id: "ssh", host: 2207, guest: 22
+    hades.vm.provision "shell", inline: "echo Hades box online!"
   end
 end
