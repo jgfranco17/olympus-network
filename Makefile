@@ -1,7 +1,6 @@
 # Setup
-NOMAD_VERSION := 1.4.1
-CONSUL_VERSION := 1.9.6
-VAULT_VERSION := 1.7.2
+NOMAD_VERSION := 1.4.2
+CONSUL_VERSION := 1.14.1
 
 ifeq ($(shell uname), Darwin)
 OS_URL := darwin
