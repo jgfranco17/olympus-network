@@ -1,7 +1,6 @@
 # Setup
-NOMAD_VERSION := 1.4.1
-CONSUL_VERSION := 1.9.6
-VAULT_VERSION := 1.7.2
+NOMAD_VERSION := 1.4.2
+CONSUL_VERSION := 1.14.1
 
 ifeq ($(shell uname), Darwin)
 OS_URL := darwin
@@ -30,9 +29,13 @@ clean:
 	@vagrant destroy -f
 	@echo Cleaned all Vagrant files.
 
-.PHONY: ping-all
-ping-all: .venv/bin/ansible
-	@cd ansible && ../.venv/bin/ansible -i inventory.yaml all -m ping
+.PHONY: ansible-setup
+ansible-setup: .venv/bin/ansible
+	@cd ansible && ../.venv/bin/ansible-playbook -i inventory.yaml playbook.yaml
+
+.PHONY: ansible-ping
+ansible-ping: .venv/bin/ansible
+	@cd ansible && ../.venv/bin/ansible -m ping -i inventory.yaml olympians
 
 .PHONY: install-requirements
 install-requirements:
