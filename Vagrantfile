@@ -1,7 +1,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  # Use the bento version because it's considered friendlier for 
+  # Use the bento version because it's considered friendlier for
   # multiple providers compared to the "official" Ubuntu version
   config.vm.box = "bento/ubuntu-20.04"
 

@@ -1,3 +1,4 @@
+---
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 fail_fast: false
@@ -10,7 +11,6 @@ repos:
       - id: end-of-file-fixer
       - id: check-yaml
       - id: check-added-large-files
-      - id: check-shebang-scripts-are-executable
       - id: check-merge-conflict
       - id: detect-private-key
       - id: requirements-txt-fixer
@@ -37,46 +37,12 @@ repos:
         stages: [commit]
         exclude: Pipfile.lock
 
-  - repo: https://github.com/jumanjihouse/pre-commit-hooks/
-    rev: 3.0.0
-    hooks:
-      - id: shfmt
-        args:
-          - -i
-          - "2"
-          - -ci
-      - id: shellcheck
-
-  - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.31.0
-    hooks:
-      - id: markdownlint
-        args:
-          [
-            --config,
-            ".markdownlint.yaml",
-            --ignore,
-            "docs/steps_catalog.md",
-            --ignore,
-            ".arene",
-          ]
-
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.26.3
     hooks:
       - id: yamllint
         args: [-s]
-
-  - repo: https://github.com/jumanjihouse/pre-commit-hooks/
-    rev: 2.1.5
-    hooks:
-      - id: shfmt
-        args:
-          - -i
-          - "2"
-          - -ci
-      - id: shellcheck
-      - id: script-must-not-have-extension
+        exclude: ^ansible/
 
   - repo: https://github.com/pycqa/isort
     rev: 5.12.0

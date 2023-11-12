@@ -24,7 +24,7 @@ echo "Nomad installed."
 # 	https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_${OS_URL}_amd64.zip
 # cd bin && unzip consul.zip
 # rm bin/consul.zip
-# 
+#
 # echo "Consul installed."
 
 mkdir vagrant

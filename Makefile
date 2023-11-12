@@ -16,7 +16,7 @@ startup:
 	@echo Ready to go!
 
 .PHONY: run-nomad-server
-run-nomad-server: 
+run-nomad-server:
 	@sudo nomad agent -dev -bind 0.0.0.0 -log-level INFO
 
 .PHONY: setup
@@ -72,4 +72,3 @@ bin/consul:
 	@cd bin && unzip consul.zip
 	@rm bin/consul.zip
 	@echo Consul ready!
-
