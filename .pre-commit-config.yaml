@@ -42,7 +42,7 @@ repos:
     hooks:
       - id: yamllint
         args: [-s]
-        exclude: ^ansible/
+        exclude: ^(ansible/|.github/)
 
   - repo: https://github.com/pycqa/isort
     rev: 5.12.0
