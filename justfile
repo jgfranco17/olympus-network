@@ -23,7 +23,7 @@ python-version:
 
 # Start the Nomad dev server
 run-nomad-server:
-    sudo nomad agent -dev -bind 0.0.0.0 -log-level INFO
+    sudo bin/nomad agent -dev -bind 0.0.0.0 -log-level INFO
 
 # Install Hashicorp suite
 setup: install-nomad install-consul
