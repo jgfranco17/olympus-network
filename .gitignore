@@ -57,6 +57,7 @@ coverage.xml
 
 # pyenv
 .python-version
+olympus-venv/
 
 .vagrant
 bin

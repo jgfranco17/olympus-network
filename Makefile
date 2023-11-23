@@ -30,30 +30,30 @@ clean:
 	@echo Cleaned all Vagrant files.
 
 .PHONY: ansible-setup
-ansible-setup: .venv/bin/ansible
-	@cd ansible && ../.venv/bin/ansible-playbook -i inventory.yaml playbook.yaml
+ansible-setup: venv/bin/ansible
+	@cd ansible && ../venv/bin/ansible-playbook -i inventory.yaml playbook.yaml
 
 .PHONY: ansible-ping
-ansible-ping: .venv/bin/ansible
-	@cd ansible && ../.venv/bin/ansible -m ping -i inventory.yaml olympians
+ansible-ping: venv/bin/ansible
+	@cd ansible && ../venv/bin/ansible -m ping -i inventory.yaml olympians
 
 .PHONY: install-requirements
 install-requirements:
-	./.venv/bin/pip install --upgrade pip
-	./.venv/bin/pip install wheel
-	./.venv/bin/pip install -r requirements.txt
+	./venv/bin/pip install --upgrade pip
+	./venv/bin/pip install wheel
+	./venv/bin/pip install -r requirements.txt
 
 .PHONY: enable-venv
 enable-venv:
-	@source ./.venv/bin/activate
+	@source ./venv/bin/activate
 
 # Local pip
-.venv/bin/pip:
-	python -m venv .venv
+venv/bin/pip:
+	python -m venv venv
 
 # Local ansible
-.venv/bin/ansible: .venv/bin/pip
-	./.venv/bin/pip install ansible
+venv/bin/ansible: venv/bin/pip
+	./venv/bin/pip install ansible
 
 # Local Nomad
 bin/nomad:

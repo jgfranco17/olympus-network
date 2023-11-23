@@ -3,8 +3,11 @@
   hosts: olympians
   become: true
   vars:
-    nomad_version: 1.4.2
+    nomad_version: 1.6.1
     user: ouranos
+    user_dev_dir: "/home/vagrant/dev"
+    nomad_bin_directory: "/usr/local/bin"
+    nomad_download_url: "https://releases.hashicorp.com/nomad/{{ nomad_version }}/nomad_{{ nomad_version }}_linux_amd64.zip"
   tasks:
     - name: Add the user {{ user }}
       ansible.builtin.user:
@@ -16,8 +19,39 @@
         force_apt_get: yes
         upgrade: dist
       become: true
+    - name: Install unzip package
+      ansible.builtin.package:
+        name: unzip
+        state: present
+    - name: Delete directory if it exists
+      ansible.builtin.file:
+        path: "{{ nomad_bin_directory }}/nomad"
+        state: absent
+    - name: Create Nomad bin directory
+      file:
+        path: "{{ nomad_bin_directory }}"
+        state: directory
+    - name: Create user directory
+      file:
+        path: "{{ user_dev_dir }}"
+        state: directory
     - name: Download Nomad binary
+      get_url:
+        url: "{{ nomad_download_url }}"
+        dest: "{{ user_dev_dir }}/nomad_{{ nomad_version }}.zip"
+    - name: Unarchive Nomad binary
       ansible.builtin.unarchive:
-        src: "https://releases.hashicorp.com/nomad/{{ nomad_version }}/nomad_{{ nomad_version }}_linux_amd64.zip"
-        dest: /usr/local/bin/nomad
+        src: "{{ user_dev_dir }}/nomad_{{ nomad_version }}.zip"
+        dest: "{{ nomad_bin_directory }}"
         remote_src: yes
+    - name: Make Nomad binary executable
+      ansible.builtin.file:
+        path: "{{ nomad_bin_directory }}/nomad"
+        mode: "u+x"
+        owner: vagrant
+    - name: Verify Nomad installation
+      command: "{{ nomad_bin_directory }}/nomad --version"
+      register: nomad_version_output
+    - name: Display Nomad version
+      debug:
+        var: nomad_version_output.stdout_lines
