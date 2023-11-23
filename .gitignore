@@ -59,5 +59,9 @@ coverage.xml
 .python-version
 olympus-venv/
 
+# Local configs
 .vagrant
 bin
+
+# Log files
+*.log
