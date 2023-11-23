@@ -1,7 +1,7 @@
 # Setup
 NOMAD_VERSION := "1.6.1"
 CONSUL_VERSION := "1.14.1"
-OS_URL := "darwin"
+OS_URL := "linux"
 
 # Main help command
 default:

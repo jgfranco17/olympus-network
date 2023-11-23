@@ -23,7 +23,7 @@
       ansible.builtin.package:
         name: unzip
         state: present
-    - name: Delete directory if it exists
+    - name: Delete Nomad directory if it exists
       ansible.builtin.file:
         path: "{{ nomad_bin_directory }}/nomad"
         state: absent
