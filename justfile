@@ -15,11 +15,12 @@ startup:
     @echo "Ready to go!"
 
 # Create a virtual environment
-create-venv:
-    python3 -m venv olympus-venv
+create-venv name:
+    python3 -m venv {{name}}
 
+# Print current Python version and location
 python-version:
-    @echo "Using Python $(python --version)"
+    @echo "Using $(python --version) from $(which python)"
 
 # Start the Nomad dev server
 run-nomad-server:
@@ -42,6 +43,15 @@ ansible-setup:
 # Sanity check for Ansible
 ansible-ping:
     cd ansible && ../olympus-venv/bin/ansible -m ping -i inventory.yaml olympians
+
+# Run an Ansible playbook
+ansible-play playbook:
+    cd ansible && ../olympus-venv/bin/ansible-playbook -i inventory.yaml {{playbook}}
+
+# Get available inventory
+get-ansible-configs:
+    @echo "Available Ansible configs:"
+    @find ./ansible/ -maxdepth 1 -type f -name "*.yaml" -o -name "*.yml"
 
 # Install Python requirements
 install-requirements:
