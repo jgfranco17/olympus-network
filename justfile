@@ -5,7 +5,7 @@ OS_URL := "linux"
 
 # Main help command
 default:
-    @just --list
+    @just --list --unsorted
 
 # Start VMs
 startup:
@@ -41,11 +41,11 @@ ansible-setup:
     cd ansible && ../olympus-venv/bin/ansible-playbook -i inventory.yaml playbook.yaml
 
 # Sanity check for Ansible
-ansible-ping:
+ping:
     cd ansible && ../olympus-venv/bin/ansible -m ping -i inventory.yaml olympians
 
 # Run an Ansible playbook
-ansible-play playbook:
+apply playbook:
     cd ansible && ../olympus-venv/bin/ansible-playbook -i inventory.yaml {{playbook}}
 
 # Get available inventory
